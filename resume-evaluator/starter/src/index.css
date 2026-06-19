@@ -1,0 +1,275 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff !important;
+  color: #000000;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* ==========================================================================
+   2. تنسيقات الهيدر (Header.jsx)
+   ========================================================================== */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+}
+
+.logo-link {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-link {
+  margin-right: 15px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-btn {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid #333;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   3. تنسيقات صفحة مقيّم السيرة الذاتية (EvaluatorPage.jsx)
+   ========================================================================== */
+/* ==========================================================================
+   3. تنسيقات صفحة مقيّم السيرة الذاتية - المطابقة للمخطط الهيكلي (Two Columns)
+   ========================================================================== */
+.evaluator-container {
+  background-color: #edf2f7;
+  min-height: 100vh;
+  width: 100%;
+  padding: 40px 0;
+  color: #000000;
+  direction: ltr; /* لغة إنجليزية مدعومة بالكامل */
+}
+
+.evaluator-wrapper {
+  max-width: 1100px; /* تم تكبير العرض ليستعطف العمودين بجانب بعضهما */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.evaluator-title {
+  color: #2d3748;
+  margin-bottom: 40px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* الحاوية الرئيسية التي تجمع الكرتين (الفورم والنتائج) بجانب بعضهما */
+.evaluator-main-layout {
+  display: flex;
+  gap: 30px; /* المسافة بين عمود الفورم وعمود النتائج */
+  align-items: stretch;
+}
+
+/* عمود الفورم (الجهة اليسرى في المخطط) */
+.evaluator-form-column {
+  flex: 1; /* يأخذ نصف المساحة بالتساوي */
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+/* عمود النتائج (الجهة اليمنى في المخطط) */
+.evaluator-results-column {
+  flex: 1; /* يأخذ النصف الآخر بالتساوي */
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #4a5568;
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  color: #000000;
+  background-color: #ffffff;
+  font-size: 15px;
+  text-align: left;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.file-upload-box {
+  display: block;
+  padding: 12px 15px;
+  background-color: #edf2f7;
+  border-radius: 8px;
+  border: 1px dashed #cbd5e0;
+  text-align: left;
+}
+
+.file-input {
+  color: #000000;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #4299e1;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.submit-btn:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+/* التنسيقات الخاصة بمنطقة النتائج */
+.results-title {
+  color: #2d3748;
+  margin-bottom: 20px;
+  font-size: 22px;
+  border-bottom: 2px solid #edf2f7;
+  padding-bottom: 10px;
+}
+
+.results-content-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.status-idle { color: #718096; font-size: 16px; line-height: 1.6; }
+.status-loading { color: #3182ce; font-weight: bold; font-size: 16px; }
+.status-error { color: #e53e3e; font-weight: bold; font-size: 16px; }
+.status-success { color: #2b6cb0; font-size: 16px; text-align: left; white-space: pre-line; }
+
+/* متجاوب: إذا كانت الشاشة صغيرة (جوال) يوضع العمودان فوق بعضهما */
+@media (max-width: 768px) {
+  .evaluator-main-layout {
+    flex-direction: column;
+  }
+}
+
+/* ==========================================================================
+   4. تنسيقات صفحات الحسابات (LoginPage.jsx & RegisterPage.jsx)
+   ========================================================================== */
+.auth-container {
+  min-height: 80vh;
+  padding: 40px 20px;
+  background-color: #f0f2f5;
+}
+
+.auth-card {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.auth-title {
+  color: #000000;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.auth-form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.auth-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: bold;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #000000;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.login-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.register-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.auth-footer-text {
+  margin-top: 20px;
+  text-align: center;
+  color: #666;
+}
+
+.auth-link {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
